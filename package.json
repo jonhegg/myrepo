@@ -1,0 +1,22 @@
+{
+  "name": "myrepo",
+  "version": "1.0.0",
+  "description": "This is my first Git repo",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonhegg/myrepo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonhegg/myrepo/issues"
+  },
+  "homepage": "https://github.com/jonhegg/myrepo#readme",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
