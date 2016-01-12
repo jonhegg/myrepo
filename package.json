@@ -17,13 +17,15 @@
   },
   "homepage": "https://github.com/jonhegg/myrepo#readme",
   "dependencies": {
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "normalize.css": "^3.0.3"
   },
   "devDependencies": {
     "browser-sync": "^2.10.1",
     "gulp": "^3.9.0",
     "gulp-compile-handlebars": "^0.6.1",
     "gulp-imagemin": "^2.4.0",
+    "gulp-less": "^3.0.5",
     "gulp-minify-css": "^1.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",

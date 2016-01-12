@@ -9,6 +9,9 @@ var rename = require('gulp-rename');
 
 var menu = require('./menu.json');
 
+var less = require('gulp-less');
+
+
 
 gulp.task('templates', function() {
   var data = {
@@ -48,7 +51,8 @@ gulp.task('scripts', function(){
 
 
 gulp.task('styles', function(){
-  gulp.src(['src/styles/**/*.css'])
+  gulp.src(['src/styles/main.less'])
+  .pipe(less())
   .pipe(sourceMaps.init())
   .pipe(minifyCss())
   .pipe(sourceMaps.write())
@@ -62,7 +66,7 @@ gulp.task('default',['styles','images','scripts','templates'], function(){
     server: './'
   });
   //gulp.watch('src/**/*',browserSync.reload);
-  gulp.watch('src/styles/**/*.css',['styles']);
+  gulp.watch('src/styles/**/*.less',['styles']);
   gulp.watch('src/scripts/**/*.js',['scripts']);
   gulp.watch('src/img/**/*',['images']);
   gulp.watch('src/templates/**/*.hbs',['templates']);
