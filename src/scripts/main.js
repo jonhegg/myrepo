@@ -1,20 +1,6 @@
-var model = {
-    init: function() {
-      console.log('Model Initialized');
-    }
-};
 
-var helper = {
-
-};
-
-var view = {
-  init: function() {
-    console.log('View Initialized');
-  }
-
-};
-
+var model = require('./modules/model.js');
+var view = require('./modules/view.js');
 
 var app = {
   init: function() {

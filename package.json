@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jonhegg/myrepo#readme",
   "dependencies": {
+    "countdown": "^2.6.0",
     "normalize.css": "^3.0.3"
   },
   "devDependencies": {
