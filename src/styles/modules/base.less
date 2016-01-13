@@ -4,8 +4,13 @@ html {
   color: @brown;
   font-size: 1em;
   line-height: 1.4;
+  box-sizing: border-box;
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+
+}
 /* make images and embedded media fluid */
 img,
 object {
@@ -15,6 +20,8 @@ object {
 .wrap {
   max-width: 1100px;
   margin: 0 auto;
+  padding: 2em 1em;
+  text-align: center;
 }
 
 .section-list,
