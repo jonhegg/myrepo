@@ -16,9 +16,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-
-
-
+var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 
 
 gulp.task('templates', function() {
@@ -29,15 +28,15 @@ gulp.task('templates', function() {
 
   var options = {
     batch: ['src/templates/partials']
-  }
+  };
 
   return gulp.src(['src/templates/**/*.hbs','!src/templates/partials/**/*.hbs'])
   .pipe(handleBars(data, options))
   .pipe(rename(function(path){
-    path.extname = '.html'
+    path.extname = '.html';
   }))
   .pipe(gulp.dest('./'));
-})
+});
 
 
 gulp.task('images', function(){
@@ -75,6 +74,17 @@ gulp.task('styles', function(){
   .pipe(gulp.dest('dist/styles'))
   .pipe(browserSync.stream());
 
+});
+
+gulp.task('lint', function() {
+  gulp.src('src/scripts/**/.js')
+  .pipe(jshint())
+  .pipe(jshint.reporter('default'));
+});
+
+gulp.task('test', function() {
+  gulp.src('test/*.js')
+  .pipe(mocha());
 });
 
 gulp.task('default',['styles','images','scripts','templates'], function(){
