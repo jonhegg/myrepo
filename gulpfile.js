@@ -18,6 +18,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
+var a11y = require('gulp-a11y');
 
 
 gulp.task('templates', function() {
@@ -82,20 +83,29 @@ gulp.task('lint', function() {
   .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test', function() {
+gulp.task('unit-test', function() {
   gulp.src('test/*.js')
   .pipe(mocha());
 });
 
-gulp.task('default',['styles','images','scripts','templates'], function(){
+gulp.task('access', function() {
+  gulp.src('index.html')
+  .pipe(a11y())
+  .pipe(a11y.reporter());
+});
+
+gulp.task('test', ['lint', 'unit-test', 'access']);
+
+
+gulp.task('default',['styles','images','scripts','templates', 'test'], function(){
   browserSync.init({
     server: './'
   });
   //gulp.watch('src/**/*',browserSync.reload);
-  gulp.watch('src/styles/**/*.less',['styles']);
-  gulp.watch('src/scripts/**/*.js',['scripts']);
+  gulp.watch('src/styles/**/*.less',['styles', 'access']);
+  gulp.watch('src/scripts/**/*.js',['scripts', 'lint', 'unit-test']);
   gulp.watch('src/img/**/*',['images']);
-  gulp.watch('src/templates/**/*.hbs',['templates']);
+  gulp.watch('src/templates/**/*.hbs',['templates', 'access']);
 
   gulp.watch('*.html',browserSync.reload);
 });
